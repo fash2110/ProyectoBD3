@@ -1,0 +1,101 @@
+Requisitos del proyecto
+Leyenda:
+	+: Tabla
+	-: Columnas de la tabla
+	*: "multiplicado por"
+	.: Consideraciones o puntos adicionales
+
++ tipos de número telefónico
+	- Personal: El cliente paga sus facturas dependiendo de la tarifa
+	- 800: El dueño del número paga las facturas (quien recibe la llamada)
+		. En la configuración se especifica el monto
+		. 11 digitos (800 + 8 digitos, Ej:800XXXXXXXX)
+	- 900: El cliente paga las facturas a un precio diferente
+		. 11 digitos (900 + 8 digitos, Ej:900XXXXXXXX)
+
++ Tipos de tarifa
+	- Nombre (Familiar(Económico, MedioCaro, Premium), 800, 900)	
+
++ Tipos de elemento
+	- Nombre (Monto tarifa básica, minutos tarifa básica, Costo minuto regular, etc.)
+
++ Clientes
+	- Identificacion
+	- Nombre
+	- Contrato
+	- ...
+
++ Tipo Relación
+	- Tipo (Padres, Hijos, Hermanos)
+
++ Relaciones familiares
+	- Cliente 1
+	- Cliente 2
+	- tipoRelación
+
++ Facturas
+	- Total
+	- IVA
+	- Multa por factura pendiente (En caso de no pagar la anterior)
+	- Total + Multa + IVA
+	- Fecha máxima a pagar
+	- Pagado (1, 0)
+
++ Detalles de factura
+	- Tarifa básica
+	- Cant. minutos adicionales
+	- Cant. gigas adicionales
+	- Cant. minutos a familiares
+	- Llamadas a 911 (1300 * cant. llamadas)
+	- Total llamadas a 110 (monto fijo * cant. minutos/llamada)
+	- Total llamadas a 900
+	- Total llamadas a 800 (recibidas)
+
++ Llamadas
+	- Número emisor
+	- Número receptor
+	- Fecha
+	- Hora inicio
+	- Hora fin
+	- gratis (1, 0)
+
++ Uso de datos
+	- Número
+	- Fecha
+	- Monto de megas consumidos (en el día)
+
+Empresa X = Números empiezan 7
+Empresa Y = Números empiezan 6
+Empreza Z = Números empiezan 8 (Nosotros)
+Se realiza corte cada 5 del mes
++ Estado de cuenta
+	- Fecha de corte
+	- Total de minutos de llamadas entrantes (de X o Y)
+	- Total de minutos de llamadas salientes (Hacia X o Y)
++ Detalle estados de cuenta
+	- Estado de cuenta
+	- Telefono emisor
+	- Telefono receptor
+	- Hora inicio
+	- Hora fin
+	- Cant. minutos
+
+Las facturaciones se hacen el día de cada mes de la creación del contrato
+	Ej:
+	Contrato: 31/5/19 | Facturaciones: 31 (Enero, Marzo, Mayo, Julio, Agosto, Octubre, Diciembre)
+					   30 (Abril, Junio, Setiembre, Noviembre)
+					   28 o 29 (Febrero)
+
+	Contrato: 15/2/20 | Facturaciones: 15 de todos los meses
+
+Script que simule la facturacion dependiendo de un XML dado
+	. Procesamiento de llamadas (Minutos regulares, minutos adicionales costo normal y reducido)
+		. Procesamiento de llamadas a 800
+		. Procesamiento de llamadas a 900
+		. Procesamiento de llamadas a 110
+		. Si fecha de contrato = fecha hoy
+			. Cerrar factura modificar detalles de facturas (Totales, multa por atraso, IVA, Total, Fecha máxima para pagar)
+			. Abrir nueva factura para el mes que viene (Todo inicializado en 0)
+	. Si dia = 5
+		. Cerrar estado de cuenta actual
+		. Abrir estado de cuenta para el mes que viene
