@@ -1,0 +1,12 @@
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\LogicaDeNegocios.dll.config
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\LogicaDeNegocios.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\LogicaDeNegocios.pdb
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\EntityFramework.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\EntityFramework.xml
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\obj\Debug\LogicaDeNegocios.csproj.AssemblyReference.cache
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\obj\Debug\LogicaDeNegocios.csproj.CoreCompileInputs.cache
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\obj\Debug\LogicaDe.F6D187F0.Up2Date
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\obj\Debug\LogicaDeNegocios.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\obj\Debug\LogicaDeNegocios.pdb

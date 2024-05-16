@@ -1,0 +1,12 @@
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\bin\Debug\Datos.dll.config
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\bin\Debug\Datos.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\bin\Debug\Datos.pdb
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\bin\Debug\EntityFramework.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\bin\Debug\EntityFramework.xml
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\obj\Debug\Datos.csproj.Up2Date
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\obj\Debug\Datos.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\Datos\obj\Debug\Datos.pdb
