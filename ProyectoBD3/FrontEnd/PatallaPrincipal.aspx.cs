@@ -16,17 +16,18 @@ namespace ProyectoBD3.FrontEnd
 
         protected void btnConsultar_Click(object sender, EventArgs e)
         {
-
+            // Se debe de verificar que el contenido sea un número que exista (Base de datos)
+            // y que sea un valor totalmente númerico (Capa lógica)
         }
 
         protected void lnkEmpresaX_Click(object sender, EventArgs e)
         {
-
+            // Cargar informacion de estados de cuenta de la empresa X
         }
 
         protected void lnkEmpresaY_Click(object sender, EventArgs e)
         {
-
+            // Cargar informacion de estados de cuenta de la empresa Y
         }
     }
 }

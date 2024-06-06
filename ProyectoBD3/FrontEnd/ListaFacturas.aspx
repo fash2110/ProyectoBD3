@@ -6,7 +6,6 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Lista de facturas</title>
-
     <style>
     body {
         font-family: 'Lucida Console';
@@ -58,13 +57,32 @@
         background-color: #f2f2f2;
     }
 
+    .option {
+        background: #e7e7e7;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        width: 20%;
+        margin-top: 10px;
+    }
+    .option input[type="text"] {
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    .option input[type="submit"], .option a {
+        background: #50b3a2;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        margin: 10px 0;
+    }
     </style>
-
-
 </head>
 <body>
     <form id="form1" runat="server">
-       
         <header>
             <div class="container">
                 <h1>Lista de Facturas</h1>
@@ -72,22 +90,31 @@
         </header>
 
         <div class="container">
-            <h2>Número Telefonico: </h2>
-            <asp:Label ID="lblNumeroTelefonico" runat="server" Text=""></asp:Label>
+            <h2>Número Telefonico:</h2>
+            <asp:Label ID="lblNumeroTelefonico" runat="server" Text="8869 5730"></asp:Label>
 
             <div class="content">
+                <div id="div1" style="max-height:600px; overflow-y:scroll;">
+                    <asp:GridView ID="gvListaFacturas" runat="server" CssClass="gridview" AutoGenerateColumns="false">
+                        <Columns>
+                            <asp:BoundField DataField="Campo1" HeaderText="Columna 1" />
+                            <asp:BoundField DataField="Campo2" HeaderText="Columna 2" />
+                            <asp:BoundField DataField="Campo3" HeaderText="Columna 3" />
+                        </Columns>
+                        <HeaderStyle BackColor="#50b3a2" ForeColor="White" />
+                        <AlternatingRowStyle BackColor="#f2f2f2" />
+                        <RowStyle BackColor="white" />
+                        <PagerStyle BackColor="#50b3a2" ForeColor="White" />
+                        <SelectedRowStyle BackColor="#50b3a2" Font-Bold="True" ForeColor="White" />
+                    </asp:GridView>
+                </div>
 
-                <asp:GridView ID="gvListaFacturas" runat="server" CssClass="gridview">
-                    <HeaderStyle BackColor="#50b3a2" ForeColor="White" />
-                    <AlternatingRowStyle BackColor="#f2f2f2" />
-                    <RowStyle BackColor="white" />
-                    <PagerStyle BackColor="#50b3a2" ForeColor="White" />
-                    <SelectedRowStyle BackColor="#50b3a2" Font-Bold="True" ForeColor="White" />
-                </asp:GridView>
-
+                <div class="option">
+                    <asp:LinkButton ID="lnkVolver" runat="server" OnClick="lnkVolver_Click">Volver</asp:LinkButton>
+                    <asp:LinkButton ID="lnkDetalles" runat="server" OnClick="lnkDetalles_Click">Detalles</asp:LinkButton>
+                </div>
             </div>
         </div>
-
     </form>
 </body>
 </html>

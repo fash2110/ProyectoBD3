@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2ef6a246715d4312b83b13d75a6135be" Name="Diagram1" ZoomLevel="41">
+        <EntityTypeShape EntityType="ProyectoBD3Model.Cliente" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.CobroFijo" Width="1.5" PointX="24.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.Contrato" Width="1.5" PointX="12.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.DBError" Width="1.5" PointX="22.125" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.DetalleLlamada" Width="1.5" PointX="11.375" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.Detalle" Width="1.5" PointX="16.375" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.DetallesECOperador" Width="1.5" PointX="22" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.DetalleUsoDato" Width="1.5" PointX="17.375" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.ElementosDeTipoTarifa" Width="1.5" PointX="5.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.EstadoDeCuentaOperador" Width="1.5" PointX="19.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.Factura" Width="1.5" PointX="14.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.LlamadaTelefonica" Width="1.5" PointX="11.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.NoLocal" Width="1.5" PointX="14.25" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.Operador" Width="1.5" PointX="17.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.RelacionFamiliar" Width="1.5" PointX="8.625" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.sysdiagram" Width="1.5" PointX="24.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.TipoElementoFijo" Width="1.5" PointX="3.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.TipoError" Width="1.5" PointX="22.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.TipoLlamadaOperador" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.TipoRelacionesFamiliar" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.TiposElemento" Width="1.5" PointX="3.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.TiposTarifa" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.TiposUnidad" Width="1.5" PointX="0.875" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.UsoDato" Width="1.5" PointX="17.375" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_Contrato_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_RelacionFamiliar_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_RelacionFamiliar_Clientes1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_Contrato_TiposTarifa" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_Factura_Contrato" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_DetalleLlamada_Detalles" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_DetalleLlamada_LlamadaTelefonica" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_Detalles_Factura" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_DetalleUsoDatos_Detalles" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_DetallesECOperador_EstadoDeCuentaOperador" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_DetalleUsoDatos_UsoDatos" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_ElementosDeTipoTarifa_TiposElemento" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_ElementosDeTipoTarifa_TiposTarifa" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_EstadoDeCuentaOperador_Operador" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_NoLocal_LlamadaTelefonica1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_NoLocal_Operador" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_RelacionFamiliar_TipoRelacionesFamiliar" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_TipoElementoFijo_TiposElemento" ManuallyRouted="false" />
+        <AssociationConnector Association="ProyectoBD3Model.FK_TiposElemento_TiposUnidad" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
