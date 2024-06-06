@@ -20,12 +20,11 @@
         header {
             background: #50b3a2;
             color: #ffffff;
-            padding-top: 30px;
-            min-height: 70px;
+            padding: 30px 0;
             border-bottom: #a2505d 3px solid;
+            text-align: center;
         }
         header h1 {
-            text-align: center;
             text-transform: uppercase;
             margin: 0;
         }
@@ -60,6 +59,7 @@
             border: none;
             border-radius: 5px;
             margin: 10px 0;
+            display: inline-block;
         }
     </style>
 </head>
@@ -77,7 +77,7 @@
                     <div class="option">
                         <h3>Consultar Facturas</h3>
                         <p>Ingrese un número telefónico:</p>
-                        <asp:TextBox ID="txtTelefono" runat="server" Placeholder="Número telefónico"></asp:TextBox>
+                        <asp:TextBox ID="txtTelefono" runat="server" Placeholder="Número telefónico" CssClass="textbox"></asp:TextBox>
                         <asp:Button ID="btnConsultar" runat="server" Text="Consultar" OnClick="btnConsultar_Click" />
                     </div>
                     <div class="option">

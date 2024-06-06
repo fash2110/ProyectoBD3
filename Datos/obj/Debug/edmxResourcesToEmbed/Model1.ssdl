@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoBD3Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Identificacion" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CobroFijo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idElementosDeTipoTarifa" Type="int" Nullable="false" />
+    <Property Name="idDetalles" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contrato">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Numero" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="DocIdCliente" Type="int" Nullable="false" />
+    <Property Name="idCliente" Type="int" />
+    <Property Name="idTarifa" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+  </EntityType>
+  <EntityType Name="DBError">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTipoError" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleLlamada">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idDetalles" Type="int" Nullable="false" />
+    <Property Name="idLlamada" Type="int" Nullable="false" />
+    <Property Name="QMinutos" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalles">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idFactura" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="64" />
+    <Property Name="Valor" Type="float" />
+    <Property Name="idUnidad" Type="int" />
+  </EntityType>
+  <EntityType Name="DetallesECOperador">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HoraDeInicio" Type="datetime" Nullable="false" />
+    <Property Name="HoraDeFin" Type="datetime" Nullable="false" />
+    <Property Name="NumeroDesde" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="NumeroHacia" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="idEstadoDeCuentaOperador" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetalleUsoDatos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idDetalles" Type="int" Nullable="false" />
+    <Property Name="idUsoDatos" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ElementosDeTipoTarifa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTipoTarifa" Type="int" />
+    <Property Name="IdTipoElemento" Type="int" />
+    <Property Name="valor" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstadoDeCuentaOperador">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idOperador" Type="int" Nullable="false" />
+    <Property Name="TotalMinutosEntrantes" Type="int" Nullable="false" />
+    <Property Name="TotalMinutosSalientes" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idContrato" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+    <Property Name="FechaPago" Type="date" Nullable="false" />
+    <Property Name="TotalAntesIVA" Type="int" Nullable="false" />
+    <Property Name="TotalConIVA" Type="int" Nullable="false" />
+    <Property Name="TotalConPendiente" Type="int" />
+    <Property Name="Pagado" Type="bit" />
+  </EntityType>
+  <EntityType Name="LlamadaTelefonica">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroDe" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="NumeroA" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="FechaHoraInicio" Type="datetime" Nullable="false" />
+    <Property Name="FechaHoraFin" Type="datetime" Nullable="false" />
+    <Property Name="EsGratis" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NoLocal">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idOperador" Type="int" Nullable="false" />
+    <Property Name="idLlamadaTelefonica" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Operador">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Prefijo" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="IdEstadoDeCuentaOperador" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RelacionFamiliar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClienteDe" Type="int" Nullable="false" />
+    <Property Name="ClienteA" Type="int" Nullable="false" />
+    <Property Name="idTipoRelacionesFamiliar" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TipoElementoFijo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="idTipoElemento" Type="int" Nullable="false" />
+    <Property Name="Valor" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoError">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Codigo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoLlamadaOperador">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreDeTipo" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoRelacionesFamiliar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposElemento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="IdTipoUnidad" Type="int" Nullable="false" />
+    <Property Name="EsFijo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposTarifa">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposUnidad">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="tipo" Type="varchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="UsoDatos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Numero" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="QGigas" Type="float" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Contrato_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="idCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Contrato_TiposTarifa">
+    <End Role="TiposTarifa" Type="Self.TiposTarifa" Multiplicity="1" />
+    <End Role="Contrato" Type="Self.Contrato" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposTarifa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Contrato">
+        <PropertyRef Name="idTarifa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleLlamada_Detalles">
+    <End Role="Detalles" Type="Self.Detalles" Multiplicity="1" />
+    <End Role="DetalleLlamada" Type="Self.DetalleLlamada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detalles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DetalleLlamada">
+        <PropertyRef Name="idDetalles" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleLlamada_LlamadaTelefonica">
+    <End Role="LlamadaTelefonica" Type="Self.LlamadaTelefonica" Multiplicity="1" />
+    <End Role="DetalleLlamada" Type="Self.DetalleLlamada" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LlamadaTelefonica">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DetalleLlamada">
+        <PropertyRef Name="idLlamada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalles_Factura">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="Detalles" Type="Self.Detalles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Detalles">
+        <PropertyRef Name="idFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetallesECOperador_EstadoDeCuentaOperador">
+    <End Role="EstadoDeCuentaOperador" Type="Self.EstadoDeCuentaOperador" Multiplicity="1" />
+    <End Role="DetallesECOperador" Type="Self.DetallesECOperador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoDeCuentaOperador">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DetallesECOperador">
+        <PropertyRef Name="idEstadoDeCuentaOperador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleUsoDatos_Detalles">
+    <End Role="Detalles" Type="Self.Detalles" Multiplicity="1" />
+    <End Role="DetalleUsoDatos" Type="Self.DetalleUsoDatos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detalles">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DetalleUsoDatos">
+        <PropertyRef Name="idDetalles" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleUsoDatos_UsoDatos">
+    <End Role="UsoDatos" Type="Self.UsoDatos" Multiplicity="1" />
+    <End Role="DetalleUsoDatos" Type="Self.DetalleUsoDatos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UsoDatos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="DetalleUsoDatos">
+        <PropertyRef Name="idUsoDatos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ElementosDeTipoTarifa_TiposElemento">
+    <End Role="TiposElemento" Type="Self.TiposElemento" Multiplicity="0..1" />
+    <End Role="ElementosDeTipoTarifa" Type="Self.ElementosDeTipoTarifa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposElemento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ElementosDeTipoTarifa">
+        <PropertyRef Name="IdTipoElemento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ElementosDeTipoTarifa_TiposTarifa">
+    <End Role="TiposTarifa" Type="Self.TiposTarifa" Multiplicity="0..1" />
+    <End Role="ElementosDeTipoTarifa" Type="Self.ElementosDeTipoTarifa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposTarifa">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ElementosDeTipoTarifa">
+        <PropertyRef Name="idTipoTarifa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EstadoDeCuentaOperador_Operador">
+    <End Role="Operador" Type="Self.Operador" Multiplicity="1" />
+    <End Role="EstadoDeCuentaOperador" Type="Self.EstadoDeCuentaOperador" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operador">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EstadoDeCuentaOperador">
+        <PropertyRef Name="idOperador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Contrato">
+    <End Role="Contrato" Type="Self.Contrato" Multiplicity="1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrato">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="idContrato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NoLocal_LlamadaTelefonica1">
+    <End Role="LlamadaTelefonica" Type="Self.LlamadaTelefonica" Multiplicity="1" />
+    <End Role="NoLocal" Type="Self.NoLocal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LlamadaTelefonica">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="NoLocal">
+        <PropertyRef Name="idLlamadaTelefonica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NoLocal_Operador">
+    <End Role="Operador" Type="Self.Operador" Multiplicity="1" />
+    <End Role="NoLocal" Type="Self.NoLocal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operador">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="NoLocal">
+        <PropertyRef Name="idOperador" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelacionFamiliar_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+    <End Role="RelacionFamiliar" Type="Self.RelacionFamiliar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="RelacionFamiliar">
+        <PropertyRef Name="ClienteDe" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelacionFamiliar_Clientes1">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+    <End Role="RelacionFamiliar" Type="Self.RelacionFamiliar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="RelacionFamiliar">
+        <PropertyRef Name="ClienteA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RelacionFamiliar_TipoRelacionesFamiliar">
+    <End Role="TipoRelacionesFamiliar" Type="Self.TipoRelacionesFamiliar" Multiplicity="1" />
+    <End Role="RelacionFamiliar" Type="Self.RelacionFamiliar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoRelacionesFamiliar">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="RelacionFamiliar">
+        <PropertyRef Name="idTipoRelacionesFamiliar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoElementoFijo_TiposElemento">
+    <End Role="TiposElemento" Type="Self.TiposElemento" Multiplicity="1" />
+    <End Role="TipoElementoFijo" Type="Self.TipoElementoFijo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposElemento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TipoElementoFijo">
+        <PropertyRef Name="idTipoElemento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TiposElemento_TiposUnidad">
+    <End Role="TiposUnidad" Type="Self.TiposUnidad" Multiplicity="1" />
+    <End Role="TiposElemento" Type="Self.TiposElemento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposUnidad">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TiposElemento">
+        <PropertyRef Name="IdTipoUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CargarXmlConfig" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="XMLData" Type="xml" Mode="In" />
+  </Function>
+  <Function Name="CargarXmlDatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="XMLData" Type="xml" Mode="In" />
+  </Function>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="ListarFacturasDeCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inNumeroDeTelefono" Type="int" Mode="In" />
+    <Parameter Name="outResultCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerDetallesFacturaLlamadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inNumeroDeTelefono" Type="int" Mode="In" />
+    <Parameter Name="inIdDeFactura" Type="int" Mode="In" />
+    <Parameter Name="outResultCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="ObtenerDetallesFacturaUsoDatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inNumeroDeTelefono" Type="int" Mode="In" />
+    <Parameter Name="inIdDeFactura" Type="int" Mode="In" />
+    <Parameter Name="outResultCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="PagarFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inIdFactura" Type="int" Mode="In" />
+    <Parameter Name="outResultCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="ProyectoBD3ModelStoreContainer">
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CobroFijo" EntityType="Self.CobroFijo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contrato" EntityType="Self.Contrato" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DBError" EntityType="Self.DBError" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetalleLlamada" EntityType="Self.DetalleLlamada" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalles" EntityType="Self.Detalles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetallesECOperador" EntityType="Self.DetallesECOperador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetalleUsoDatos" EntityType="Self.DetalleUsoDatos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ElementosDeTipoTarifa" EntityType="Self.ElementosDeTipoTarifa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadoDeCuentaOperador" EntityType="Self.EstadoDeCuentaOperador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LlamadaTelefonica" EntityType="Self.LlamadaTelefonica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NoLocal" EntityType="Self.NoLocal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operador" EntityType="Self.Operador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RelacionFamiliar" EntityType="Self.RelacionFamiliar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoElementoFijo" EntityType="Self.TipoElementoFijo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoError" EntityType="Self.TipoError" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoLlamadaOperador" EntityType="Self.TipoLlamadaOperador" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoRelacionesFamiliar" EntityType="Self.TipoRelacionesFamiliar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposElemento" EntityType="Self.TiposElemento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposTarifa" EntityType="Self.TiposTarifa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposUnidad" EntityType="Self.TiposUnidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsoDatos" EntityType="Self.UsoDatos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Contrato_Clientes" Association="Self.FK_Contrato_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Contrato_TiposTarifa" Association="Self.FK_Contrato_TiposTarifa">
+      <End Role="TiposTarifa" EntitySet="TiposTarifa" />
+      <End Role="Contrato" EntitySet="Contrato" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleLlamada_Detalles" Association="Self.FK_DetalleLlamada_Detalles">
+      <End Role="Detalles" EntitySet="Detalles" />
+      <End Role="DetalleLlamada" EntitySet="DetalleLlamada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleLlamada_LlamadaTelefonica" Association="Self.FK_DetalleLlamada_LlamadaTelefonica">
+      <End Role="LlamadaTelefonica" EntitySet="LlamadaTelefonica" />
+      <End Role="DetalleLlamada" EntitySet="DetalleLlamada" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalles_Factura" Association="Self.FK_Detalles_Factura">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="Detalles" EntitySet="Detalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetallesECOperador_EstadoDeCuentaOperador" Association="Self.FK_DetallesECOperador_EstadoDeCuentaOperador">
+      <End Role="EstadoDeCuentaOperador" EntitySet="EstadoDeCuentaOperador" />
+      <End Role="DetallesECOperador" EntitySet="DetallesECOperador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleUsoDatos_Detalles" Association="Self.FK_DetalleUsoDatos_Detalles">
+      <End Role="Detalles" EntitySet="Detalles" />
+      <End Role="DetalleUsoDatos" EntitySet="DetalleUsoDatos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleUsoDatos_UsoDatos" Association="Self.FK_DetalleUsoDatos_UsoDatos">
+      <End Role="UsoDatos" EntitySet="UsoDatos" />
+      <End Role="DetalleUsoDatos" EntitySet="DetalleUsoDatos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ElementosDeTipoTarifa_TiposElemento" Association="Self.FK_ElementosDeTipoTarifa_TiposElemento">
+      <End Role="TiposElemento" EntitySet="TiposElemento" />
+      <End Role="ElementosDeTipoTarifa" EntitySet="ElementosDeTipoTarifa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ElementosDeTipoTarifa_TiposTarifa" Association="Self.FK_ElementosDeTipoTarifa_TiposTarifa">
+      <End Role="TiposTarifa" EntitySet="TiposTarifa" />
+      <End Role="ElementosDeTipoTarifa" EntitySet="ElementosDeTipoTarifa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EstadoDeCuentaOperador_Operador" Association="Self.FK_EstadoDeCuentaOperador_Operador">
+      <End Role="Operador" EntitySet="Operador" />
+      <End Role="EstadoDeCuentaOperador" EntitySet="EstadoDeCuentaOperador" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Contrato" Association="Self.FK_Factura_Contrato">
+      <End Role="Contrato" EntitySet="Contrato" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NoLocal_LlamadaTelefonica1" Association="Self.FK_NoLocal_LlamadaTelefonica1">
+      <End Role="LlamadaTelefonica" EntitySet="LlamadaTelefonica" />
+      <End Role="NoLocal" EntitySet="NoLocal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NoLocal_Operador" Association="Self.FK_NoLocal_Operador">
+      <End Role="Operador" EntitySet="Operador" />
+      <End Role="NoLocal" EntitySet="NoLocal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelacionFamiliar_Clientes" Association="Self.FK_RelacionFamiliar_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="RelacionFamiliar" EntitySet="RelacionFamiliar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelacionFamiliar_Clientes1" Association="Self.FK_RelacionFamiliar_Clientes1">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="RelacionFamiliar" EntitySet="RelacionFamiliar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RelacionFamiliar_TipoRelacionesFamiliar" Association="Self.FK_RelacionFamiliar_TipoRelacionesFamiliar">
+      <End Role="TipoRelacionesFamiliar" EntitySet="TipoRelacionesFamiliar" />
+      <End Role="RelacionFamiliar" EntitySet="RelacionFamiliar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoElementoFijo_TiposElemento" Association="Self.FK_TipoElementoFijo_TiposElemento">
+      <End Role="TiposElemento" EntitySet="TiposElemento" />
+      <End Role="TipoElementoFijo" EntitySet="TipoElementoFijo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TiposElemento_TiposUnidad" Association="Self.FK_TiposElemento_TiposUnidad">
+      <End Role="TiposUnidad" EntitySet="TiposUnidad" />
+      <End Role="TiposElemento" EntitySet="TiposElemento" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
