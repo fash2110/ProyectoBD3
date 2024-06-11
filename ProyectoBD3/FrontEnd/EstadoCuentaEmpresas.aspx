@@ -52,6 +52,22 @@
     .gridview tr:nth-child(even) {
         background-color: #f2f2f2;
     }
+    .gridview .select-button {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 1px solid #50b3a2;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        color: #50b3a2;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .gridview .select-button:hover {
+        background-color: #50b3a2;
+        color: white;
+        cursor: pointer;
+    }
     .option {
         background: #e7e7e7;
         padding: 20px;
@@ -80,22 +96,18 @@
     <form id="form1" runat="server">
         <header>
             <div class="container">
-                <h1>Lista de Facturas</h1>
+                <h1>Lista de Estados de Cuenta</h1>
             </div>
         </header>
 
         <div class="container">
             <h2>Estados de cuenta de:</h2>
-            <asp:Label ID="lblNombreEmpresa" runat="server" Text="Empresa W"></asp:Label>
+            <asp:Label ID="lblNombreEmpresa" runat="server" Text="Empresa Desconocida"></asp:Label>
 
             <div class="content">
                 <div id="div1" style="max-height:600px; overflow-y:scroll;">
-                    <asp:GridView ID="gvListaEstadosDeCuentas" runat="server" CssClass="gridview" AutoGenerateColumns="False">
-                        <Columns>
-                            <asp:BoundField DataField="Campo1" HeaderText="Columna 1" />
-                            <asp:BoundField DataField="Campo2" HeaderText="Columna 2" />
-                            <asp:BoundField DataField="Campo3" HeaderText="Columna 3" />
-                        </Columns>
+                    <asp:GridView ID="gvListaEstadosDeCuentas" runat="server" CssClass="gridview" AutoGenerateSelectButton="true" 
+                                  OnRowDataBound="gvListaEstadosDeCuentas_RowDataBound" OnSelectedIndexChanged="gvListaEstadosDeCuentas_SelectedIndexChanged">
                         <HeaderStyle BackColor="#50b3a2" ForeColor="White" />
                         <AlternatingRowStyle BackColor="#f2f2f2" />
                         <RowStyle BackColor="white" />

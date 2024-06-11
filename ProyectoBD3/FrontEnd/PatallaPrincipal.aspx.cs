@@ -22,12 +22,14 @@ namespace ProyectoBD3.FrontEnd
 
         protected void lnkEmpresaX_Click(object sender, EventArgs e)
         {
-            // Cargar informacion de estados de cuenta de la empresa X
+            Session["codigoDeEmpresa"] = 1;
+            Response.Redirect("EstadoCuentaEmpresas.aspx");
         }
 
         protected void lnkEmpresaY_Click(object sender, EventArgs e)
         {
-            // Cargar informacion de estados de cuenta de la empresa Y
+            Session["codigoDeEmpresa"] = 2;
+            Response.Redirect("EstadoCuentaEmpresas.aspx");
         }
     }
 }

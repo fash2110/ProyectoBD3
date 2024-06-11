@@ -5,38 +5,59 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LogicaDeNegocios;
 
 namespace ProyectoBD3.FrontEnd
 {
     public partial class DetallesEstadoDeCuentaEmpresa : System.Web.UI.Page
-    {
+    {   
+
+        private Logica Logica = new Logica();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // Crear una tabla de datos simulada
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Campo1");
-                dt.Columns.Add("Campo2");
-                dt.Columns.Add("Campo3");
-
-                // Añadir 30 filas a la tabla
-                for (int i = 1; i <= 100; i++)
+                if (Session["codigoDeEmpresa"] != null && Session["fechaDeEstadoDeCuenta"] != null)
                 {
-                    dt.Rows.Add("Dato " + i, "Dato " + i, "Dato " + i);
-                }
+                    int codigoDeEmpresa = (int)Session["codigoDeEmpresa"];
+                    string fechaDeEstadoDeCuenta = (string)Session["fechaDeEstadoDeCuenta"];
 
-                // Enlazar el GridView
-                gvDetails.DataSource = dt;
-                gvDetails.DataBind();
+                    LlenarGridView(codigoDeEmpresa, fechaDeEstadoDeCuenta);
+                    Session.Remove("codigoDeEmpresa");
+                    Session.Remove("fechaDeEstadoDeCuenta");
+
+                    if (codigoDeEmpresa == 1)
+                        tituloDIV.Text = "Empresa respectiva X";
+
+                    if (codigoDeEmpresa == 2)
+                        tituloDIV.Text = "Empresa respectiva Y";
+
+                }
             }
+        }
+        private void LlenarGridView(int CodigoDeEmpresa, string FechaDeEstadoDeCuenta)
+        {
+            var datos = Logica.recuperarLlamadasDeEstadoDeCuenta(CodigoDeEmpresa, FechaDeEstadoDeCuenta);
+            gvLlamadasDeEstadoDeCuenta.DataSource = datos;
+            gvLlamadasDeEstadoDeCuenta.DataBind();
         }
 
         protected void lnkVolver_Click(object sender, EventArgs e)
         {
-            // Volver a la página principal
-
             Response.Redirect("PatallaPrincipal.aspx");
+        }
+
+        protected void gvLlamadasDeEstadoDeCuenta_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton selectButton = e.Row.Cells[0].Controls[0] as LinkButton;
+                if (selectButton != null)
+                {
+                    selectButton.CssClass = "select-button";
+                }
+            }
         }
     }
 }

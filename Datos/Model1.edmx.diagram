@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2ef6a246715d4312b83b13d75a6135be" Name="Diagram1" ZoomLevel="41">
+      <Diagram DiagramId="2ef6a246715d4312b83b13d75a6135be" Name="Diagram1" ZoomLevel="49">
         <EntityTypeShape EntityType="ProyectoBD3Model.Cliente" Width="1.5" PointX="6" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoBD3Model.CobroFijo" Width="1.5" PointX="24.5" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoBD3Model.Contrato" Width="1.5" PointX="12.25" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProyectoBD3Model.DBError" Width="1.5" PointX="22.125" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.DBError" Width="1.5" PointX="22.125" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoBD3Model.DetalleLlamada" Width="1.5" PointX="11.375" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoBD3Model.Detalle" Width="1.5" PointX="16.375" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="ProyectoBD3Model.DetallesECOperador" Width="1.5" PointX="22" PointY="12" IsExpanded="true" />
@@ -48,6 +48,7 @@
         <AssociationConnector Association="ProyectoBD3Model.FK_RelacionFamiliar_TipoRelacionesFamiliar" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoBD3Model.FK_TipoElementoFijo_TiposElemento" ManuallyRouted="false" />
         <AssociationConnector Association="ProyectoBD3Model.FK_TiposElemento_TiposUnidad" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ProyectoBD3Model.EstadoDeCuenta" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

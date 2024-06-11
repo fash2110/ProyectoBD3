@@ -584,6 +584,7 @@
     </FunctionImport>
     <FunctionImport Name="CargarXmlDatos">
       <Parameter Name="XMLData" Mode="In" Type="String" />
+      <Parameter Name="OutResultCode" Mode="InOut" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="PagarFactura">
       <Parameter Name="inIdFactura" Mode="In" Type="Int32" />
@@ -619,19 +620,25 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <FunctionImport Name="ListarFacturasDeCliente" ReturnType="Collection(ProyectoBD3Model.ListarFacturasDeCliente_Result)">
-      <Parameter Name="inNumeroDeTelefono" Mode="In" Type="Int32" />
+    <EntitySet Name="EstadoDeCuentas" EntityType="ProyectoBD3Model.EstadoDeCuenta" />
+    <FunctionImport Name="cerrarEstadoDeCuenta">
       <Parameter Name="outResultCode" Mode="InOut" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="ObtenerDetallesFacturaLlamadas" ReturnType="Collection(ProyectoBD3Model.ObtenerDetallesFacturaLlamadas_Result)">
-      <Parameter Name="inNumeroDeTelefono" Mode="In" Type="Int32" />
-      <Parameter Name="inIdDeFactura" Mode="In" Type="Int32" />
+    <FunctionImport Name="cerrarFactura">
       <Parameter Name="outResultCode" Mode="InOut" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="ObtenerDetallesFacturaUsoDatos" ReturnType="Collection(Double)">
-      <Parameter Name="inNumeroDeTelefono" Mode="In" Type="Int32" />
-      <Parameter Name="inIdDeFactura" Mode="In" Type="Int32" />
+    <FunctionImport Name="ListarEstadosDeCuentas" ReturnType="Collection(ProyectoBD3Model.ListarEstadosDeCuentas_Result)">
+      <Parameter Name="inCodigoEmpresa" Mode="In" Type="Int32" />
       <Parameter Name="outResultCode" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ListarLlamadasEstadoDeCuenta" ReturnType="Collection(ProyectoBD3Model.ListarLlamadasEstadoDeCuenta_Result)">
+      <Parameter Name="inFechaDeEstadoDeCuenta" Mode="In" Type="String" />
+      <Parameter Name="inCodigoEmpresa" Mode="In" Type="Int32" />
+      <Parameter Name="outResultCode" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="mostrarDetalles" ReturnType="Collection(ProyectoBD3Model.mostrarDetalles_Result)">
+      <Parameter Name="inIdFactura" Mode="In" Type="Int32" />
+      <Parameter Name="outResultCode" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -659,5 +666,38 @@
     <Property Type="String" Name="NumeroA" Nullable="false" MaxLength="64" />
     <Property Type="Double" Name="QMinutos" Nullable="false" />
     <Property Type="Boolean" Name="EsGratis" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="EstadoDeCuenta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="MinutosEntrantes" Type="Int32" />
+    <Property Name="MinutosSaliente" Type="Int32" />
+    <Property Name="Empresa" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="ListarEstadosDeCuentas_Result">
+    <Property Type="String" Name="Empresa" Nullable="true" MaxLength="16" />
+    <Property Type="String" Name="Fecha" Nullable="true" />
+    <Property Type="Int32" Name="MinutosEntrantes" Nullable="true" />
+    <Property Type="Int32" Name="MinutosSaliente" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="ListarLlamadasEstadoDeCuenta_Result">
+    <Property Type="String" Name="NumeroDe" Nullable="false" MaxLength="64" />
+    <Property Type="String" Name="NumeroA" Nullable="false" MaxLength="64" />
+    <Property Type="DateTime" Name="FechaHoraInicio" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaHoraFin" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="DuracionMinutos" Nullable="true" />
+    <Property Type="String" Name="TipoLlamada" Nullable="false" MaxLength="11" />
+  </ComplexType>
+  <ComplexType Name="mostrarDetalles_Result">
+    <Property Type="Int32" Name="TarifaBase" Nullable="true" />
+    <Property Type="Double" Name="MinutosExcedidos" Nullable="true" />
+    <Property Type="Double" Name="Gigas_Excedidos" Nullable="true" />
+    <Property Type="Int32" Name="Cobro911" Nullable="true" />
+    <Property Type="Int32" Name="Cobro110" Nullable="true" />
+    <Property Type="Int32" Name="Cobro800" Nullable="true" />
+    <Property Type="Int32" Name="Cobro900" Nullable="true" />
   </ComplexType>
 </Schema>

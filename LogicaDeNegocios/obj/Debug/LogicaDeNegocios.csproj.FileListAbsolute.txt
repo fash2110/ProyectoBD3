@@ -10,3 +10,6 @@ C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\obj\Debug\LogicaDeN
 C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\obj\Debug\LogicaDe.F6D187F0.Up2Date
 C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\obj\Debug\LogicaDeNegocios.dll
 C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\obj\Debug\LogicaDeNegocios.pdb
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\Datos.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\Datos.pdb
+C:\Users\todom\Documents\GitHub\ProyectoBD3\LogicaDeNegocios\bin\Debug\Datos.dll.config

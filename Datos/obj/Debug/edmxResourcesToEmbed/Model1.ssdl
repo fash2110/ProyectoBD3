@@ -82,6 +82,16 @@
     <Property Name="IdTipoElemento" Type="int" />
     <Property Name="valor" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="EstadoDeCuenta">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="MinutosEntrantes" Type="int" />
+    <Property Name="MinutosSaliente" Type="int" />
+    <Property Name="Empresa" Type="varchar" MaxLength="16" />
+  </EntityType>
   <EntityType Name="EstadoDeCuentaOperador">
     <Key>
       <PropertyRef Name="id" />
@@ -445,21 +455,27 @@
   </Function>
   <Function Name="CargarXmlDatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="XMLData" Type="xml" Mode="In" />
+    <Parameter Name="OutResultCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="cerrarEstadoDeCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="outResultCode" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="cerrarFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="outResultCode" Type="int" Mode="InOut" />
   </Function>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="ListarFacturasDeCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="inNumeroDeTelefono" Type="int" Mode="In" />
+  <Function Name="ListarEstadosDeCuentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inCodigoEmpresa" Type="int" Mode="In" />
     <Parameter Name="outResultCode" Type="int" Mode="InOut" />
   </Function>
-  <Function Name="ObtenerDetallesFacturaLlamadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="inNumeroDeTelefono" Type="int" Mode="In" />
-    <Parameter Name="inIdDeFactura" Type="int" Mode="In" />
+  <Function Name="ListarLlamadasEstadoDeCuenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inFechaDeEstadoDeCuenta" Type="varchar" Mode="In" />
+    <Parameter Name="inCodigoEmpresa" Type="int" Mode="In" />
     <Parameter Name="outResultCode" Type="int" Mode="InOut" />
   </Function>
-  <Function Name="ObtenerDetallesFacturaUsoDatos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="inNumeroDeTelefono" Type="int" Mode="In" />
-    <Parameter Name="inIdDeFactura" Type="int" Mode="In" />
-    <Parameter Name="outResultCode" Type="int" Mode="InOut" />
+  <Function Name="mostrarDetalles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inIdFactura" Type="int" Mode="In" />
+    <Parameter Name="outResultCode" Type="int" Mode="In" />
   </Function>
   <Function Name="PagarFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="inIdFactura" Type="int" Mode="In" />
@@ -505,6 +521,7 @@
     <EntitySet Name="DetallesECOperador" EntityType="Self.DetallesECOperador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetalleUsoDatos" EntityType="Self.DetalleUsoDatos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ElementosDeTipoTarifa" EntityType="Self.ElementosDeTipoTarifa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadoDeCuenta" EntityType="Self.EstadoDeCuenta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstadoDeCuentaOperador" EntityType="Self.EstadoDeCuentaOperador" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LlamadaTelefonica" EntityType="Self.LlamadaTelefonica" Schema="dbo" store:Type="Tables" />

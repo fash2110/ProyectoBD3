@@ -264,29 +264,53 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ProyectoBD3Model.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ProyectoBD3Model.Store.sp_upgraddiagrams" />
-    <FunctionImportMapping FunctionImportName="ListarFacturasDeCliente" FunctionName="ProyectoBD3Model.Store.ListarFacturasDeCliente">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="ProyectoBD3Model.ListarFacturasDeCliente_Result">
+    <EntitySetMapping Name="EstadoDeCuentas">
+      <EntityTypeMapping TypeName="ProyectoBD3Model.EstadoDeCuenta">
+        <MappingFragment StoreEntitySet="EstadoDeCuenta">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="MinutosSaliente" ColumnName="MinutosSaliente" />
+          <ScalarProperty Name="MinutosEntrantes" ColumnName="MinutosEntrantes" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-          <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
-          <ScalarProperty Name="TotalAntesIVA" ColumnName="TotalAntesIVA" />
-          <ScalarProperty Name="TotalConIVA" ColumnName="TotalConIVA" />
-          <ScalarProperty Name="TotalConPendiente" ColumnName="TotalConPendiente" />
-          <ScalarProperty Name="Pagado" ColumnName="Pagado" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="cerrarEstadoDeCuenta" FunctionName="ProyectoBD3Model.Store.cerrarEstadoDeCuenta" />
+    <FunctionImportMapping FunctionImportName="cerrarFactura" FunctionName="ProyectoBD3Model.Store.cerrarFactura" />
+    <FunctionImportMapping FunctionImportName="ListarEstadosDeCuentas" FunctionName="ProyectoBD3Model.Store.ListarEstadosDeCuentas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoBD3Model.ListarEstadosDeCuentas_Result">
+          <ScalarProperty Name="Empresa" ColumnName="Empresa" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="MinutosEntrantes" ColumnName="MinutosEntrantes" />
+          <ScalarProperty Name="MinutosSaliente" ColumnName="MinutosSaliente" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ObtenerDetallesFacturaLlamadas" FunctionName="ProyectoBD3Model.Store.ObtenerDetallesFacturaLlamadas">
+    <FunctionImportMapping FunctionImportName="ListarLlamadasEstadoDeCuenta" FunctionName="ProyectoBD3Model.Store.ListarLlamadasEstadoDeCuenta">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="ProyectoBD3Model.ObtenerDetallesFacturaLlamadas_Result">
+        <ComplexTypeMapping TypeName="ProyectoBD3Model.ListarLlamadasEstadoDeCuenta_Result">
+          <ScalarProperty Name="NumeroDe" ColumnName="NumeroDe" />
+          <ScalarProperty Name="NumeroA" ColumnName="NumeroA" />
           <ScalarProperty Name="FechaHoraInicio" ColumnName="FechaHoraInicio" />
           <ScalarProperty Name="FechaHoraFin" ColumnName="FechaHoraFin" />
-          <ScalarProperty Name="NumeroA" ColumnName="NumeroA" />
-          <ScalarProperty Name="QMinutos" ColumnName="QMinutos" />
-          <ScalarProperty Name="EsGratis" ColumnName="EsGratis" />
+          <ScalarProperty Name="DuracionMinutos" ColumnName="DuracionMinutos" />
+          <ScalarProperty Name="TipoLlamada" ColumnName="TipoLlamada" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="ObtenerDetallesFacturaUsoDatos" FunctionName="ProyectoBD3Model.Store.ObtenerDetallesFacturaUsoDatos" />
+    <FunctionImportMapping FunctionImportName="mostrarDetalles" FunctionName="ProyectoBD3Model.Store.mostrarDetalles">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProyectoBD3Model.mostrarDetalles_Result">
+          <ScalarProperty Name="TarifaBase" ColumnName="TarifaBase" />
+          <ScalarProperty Name="MinutosExcedidos" ColumnName="MinutosExcedidos" />
+          <ScalarProperty Name="Gigas_Excedidos" ColumnName="Gigas Excedidos" />
+          <ScalarProperty Name="Cobro911" ColumnName="Cobro911" />
+          <ScalarProperty Name="Cobro110" ColumnName="Cobro110" />
+          <ScalarProperty Name="Cobro800" ColumnName="Cobro800" />
+          <ScalarProperty Name="Cobro900" ColumnName="Cobro900" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

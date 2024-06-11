@@ -55,23 +55,19 @@
 <body>
     <form id="form1" runat="server">
         <div class="container">
-            <div class="title">Empresa Respectiva:</div>
+            <div id="myDiv" class="title" runat="server">
+                <asp:Literal ID="tituloDIV" runat="server"></asp:Literal>
+            </div>
 
                 <div id="popup" style="max-height:600px;overflow-y:scroll;margin-top:10px;">
-                    <asp:GridView ID="gvDetails" runat="server" CssClass="gridview" AutoGenerateColumns="False">
-                        
-                        <Columns>
-                            <asp:BoundField DataField="Campo1" HeaderText="Columna 1" />
-                            <asp:BoundField DataField="Campo2" HeaderText="Columna 2" />
-                            <asp:BoundField DataField="Campo3" HeaderText="Columna 3" />
-                        </Columns>
-
+                    
+                    <asp:GridView ID="gvLlamadasDeEstadoDeCuenta" runat="server" CssClass="gridview"> 
+                                  
                         <HeaderStyle BackColor="#50b3a2" ForeColor="White" />
                         <AlternatingRowStyle BackColor="#f2f2f2" />
                         <RowStyle BackColor="white" />
                         <PagerStyle BackColor="#50b3a2" ForeColor="White" />
                         <SelectedRowStyle BackColor="#50b3a2" Font-Bold="True" ForeColor="White" />
-
                     </asp:GridView>
 
                 </div>

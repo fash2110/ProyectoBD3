@@ -77,3 +77,9 @@ C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\EntityFramework.dll
 C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\EntityFramework.SqlServer.dll
 C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\EntityFramework.xml
 C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\EntityFramework.SqlServer.xml
+C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\Datos.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\LogicaDeNegocios.dll
+C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\Datos.pdb
+C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\Datos.dll.config
+C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\LogicaDeNegocios.pdb
+C:\Users\todom\Documents\GitHub\ProyectoBD3\ProyectoBD3\bin\LogicaDeNegocios.dll.config

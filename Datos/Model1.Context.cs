@@ -51,6 +51,7 @@ namespace Datos
         public virtual DbSet<TiposTarifa> TiposTarifas { get; set; }
         public virtual DbSet<TiposUnidad> TiposUnidads { get; set; }
         public virtual DbSet<UsoDato> UsoDatos { get; set; }
+        public virtual DbSet<EstadoDeCuenta> EstadoDeCuentas { get; set; }
     
         public virtual int CargarXmlConfig(string xMLData)
         {
@@ -61,13 +62,13 @@ namespace Datos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CargarXmlConfig", xMLDataParameter);
         }
     
-        public virtual int CargarXmlDatos(string xMLData)
+        public virtual int CargarXmlDatos(string xMLData, ObjectParameter outResultCode)
         {
             var xMLDataParameter = xMLData != null ?
                 new ObjectParameter("XMLData", xMLData) :
                 new ObjectParameter("XMLData", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CargarXmlDatos", xMLDataParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CargarXmlDatos", xMLDataParameter, outResultCode);
         }
     
         public virtual int PagarFactura(Nullable<int> inIdFactura, Nullable<int> outResultCode)
@@ -186,39 +187,49 @@ namespace Datos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
-        public virtual ObjectResult<ListarFacturasDeCliente_Result> ListarFacturasDeCliente(Nullable<int> inNumeroDeTelefono, ObjectParameter outResultCode)
+        public virtual int cerrarEstadoDeCuenta(ObjectParameter outResultCode)
         {
-            var inNumeroDeTelefonoParameter = inNumeroDeTelefono.HasValue ?
-                new ObjectParameter("inNumeroDeTelefono", inNumeroDeTelefono) :
-                new ObjectParameter("inNumeroDeTelefono", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarFacturasDeCliente_Result>("ListarFacturasDeCliente", inNumeroDeTelefonoParameter, outResultCode);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("cerrarEstadoDeCuenta", outResultCode);
         }
     
-        public virtual ObjectResult<ObtenerDetallesFacturaLlamadas_Result> ObtenerDetallesFacturaLlamadas(Nullable<int> inNumeroDeTelefono, Nullable<int> inIdDeFactura, ObjectParameter outResultCode)
+        public virtual int cerrarFactura(ObjectParameter outResultCode)
         {
-            var inNumeroDeTelefonoParameter = inNumeroDeTelefono.HasValue ?
-                new ObjectParameter("inNumeroDeTelefono", inNumeroDeTelefono) :
-                new ObjectParameter("inNumeroDeTelefono", typeof(int));
-    
-            var inIdDeFacturaParameter = inIdDeFactura.HasValue ?
-                new ObjectParameter("inIdDeFactura", inIdDeFactura) :
-                new ObjectParameter("inIdDeFactura", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ObtenerDetallesFacturaLlamadas_Result>("ObtenerDetallesFacturaLlamadas", inNumeroDeTelefonoParameter, inIdDeFacturaParameter, outResultCode);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("cerrarFactura", outResultCode);
         }
     
-        public virtual ObjectResult<Nullable<double>> ObtenerDetallesFacturaUsoDatos(Nullable<int> inNumeroDeTelefono, Nullable<int> inIdDeFactura, ObjectParameter outResultCode)
+        public virtual ObjectResult<ListarEstadosDeCuentas_Result> ListarEstadosDeCuentas(Nullable<int> inCodigoEmpresa, ObjectParameter outResultCode)
         {
-            var inNumeroDeTelefonoParameter = inNumeroDeTelefono.HasValue ?
-                new ObjectParameter("inNumeroDeTelefono", inNumeroDeTelefono) :
-                new ObjectParameter("inNumeroDeTelefono", typeof(int));
+            var inCodigoEmpresaParameter = inCodigoEmpresa.HasValue ?
+                new ObjectParameter("inCodigoEmpresa", inCodigoEmpresa) :
+                new ObjectParameter("inCodigoEmpresa", typeof(int));
     
-            var inIdDeFacturaParameter = inIdDeFactura.HasValue ?
-                new ObjectParameter("inIdDeFactura", inIdDeFactura) :
-                new ObjectParameter("inIdDeFactura", typeof(int));
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarEstadosDeCuentas_Result>("ListarEstadosDeCuentas", inCodigoEmpresaParameter, outResultCode);
+        }
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("ObtenerDetallesFacturaUsoDatos", inNumeroDeTelefonoParameter, inIdDeFacturaParameter, outResultCode);
+        public virtual ObjectResult<ListarLlamadasEstadoDeCuenta_Result> ListarLlamadasEstadoDeCuenta(string inFechaDeEstadoDeCuenta, Nullable<int> inCodigoEmpresa, ObjectParameter outResultCode)
+        {
+            var inFechaDeEstadoDeCuentaParameter = inFechaDeEstadoDeCuenta != null ?
+                new ObjectParameter("inFechaDeEstadoDeCuenta", inFechaDeEstadoDeCuenta) :
+                new ObjectParameter("inFechaDeEstadoDeCuenta", typeof(string));
+    
+            var inCodigoEmpresaParameter = inCodigoEmpresa.HasValue ?
+                new ObjectParameter("inCodigoEmpresa", inCodigoEmpresa) :
+                new ObjectParameter("inCodigoEmpresa", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListarLlamadasEstadoDeCuenta_Result>("ListarLlamadasEstadoDeCuenta", inFechaDeEstadoDeCuentaParameter, inCodigoEmpresaParameter, outResultCode);
+        }
+    
+        public virtual ObjectResult<mostrarDetalles_Result> mostrarDetalles(Nullable<int> inIdFactura, Nullable<int> outResultCode)
+        {
+            var inIdFacturaParameter = inIdFactura.HasValue ?
+                new ObjectParameter("inIdFactura", inIdFactura) :
+                new ObjectParameter("inIdFactura", typeof(int));
+    
+            var outResultCodeParameter = outResultCode.HasValue ?
+                new ObjectParameter("outResultCode", outResultCode) :
+                new ObjectParameter("outResultCode", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<mostrarDetalles_Result>("mostrarDetalles", inIdFacturaParameter, outResultCodeParameter);
         }
     }
 }

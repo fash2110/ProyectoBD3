@@ -24,13 +24,31 @@ namespace ProyectoBD3.FrontEnd
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// gvDetails control.
+        /// myDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myDiv;
+
+        /// <summary>
+        /// tituloDIV control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal tituloDIV;
+
+        /// <summary>
+        /// gvLlamadasDeEstadoDeCuenta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvLlamadasDeEstadoDeCuenta;
 
         /// <summary>
         /// lnkVolver control.

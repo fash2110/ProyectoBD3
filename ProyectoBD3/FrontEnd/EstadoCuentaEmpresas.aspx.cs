@@ -4,76 +4,80 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LogicaDeNegocios;
 
 namespace ProyectoBD3.FrontEnd
 {
     public partial class EstadoCuentaEmpresas : System.Web.UI.Page
     {
+
+        private Logica Logica = new Logica();
+        private int codigoDeEmpresa = -1;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                LlenarGridView();
+
+                if (Session["codigoDeEmpresa"] != null)
+                {   
+                    this.codigoDeEmpresa = (int)Session["codigoDeEmpresa"];
+
+                    if (codigoDeEmpresa == 1)
+                        lblNombreEmpresa.Text = "Empresa X";
+
+                    if (codigoDeEmpresa == 2)
+                        lblNombreEmpresa.Text = "Empresa Y";
+
+                    LlenarGridView(codigoDeEmpresa);
+                }
+
             }
         }
 
-        private void LlenarGridView()
+        private void LlenarGridView(int CodigoDeEmpresa)
         {
-            // Crear una lista de objetos anónimos con datos ficticios
-            var datos = new List<dynamic>
-            {
-                new { Campo1 = "Dato 1", Campo2 = "Dato 2", Campo3 = "Dato 3" },
-                new { Campo1 = "Dato 4", Campo2 = "Dato 5", Campo3 = "Dato 6" },
-                new { Campo1 = "Dato 7", Campo2 = "Dato 8", Campo3 = "Dato 9" },
-                new { Campo1 = "Dato 10", Campo2 = "Dato 11", Campo3 = "Dato 12" },
-                new { Campo1 = "Dato 13", Campo2 = "Dato 14", Campo3 = "Dato 15" },
-                new { Campo1 = "Dato 16", Campo2 = "Dato 17", Campo3 = "Dato 18" },
-                new { Campo1 = "Dato 19", Campo2 = "Dato 20", Campo3 = "Dato 21" },
-                new { Campo1 = "Dato 22", Campo2 = "Dato 23", Campo3 = "Dato 24" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 28", Campo2 = "Dato 29", Campo3 = "Dato 30" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" },
-                new { Campo1 = "Dato 25", Campo2 = "Dato 26", Campo3 = "Dato 27" }
-            };
-
-            // Asignar la lista de datos al GridView y enlazar los datos
+            var datos = Logica.recuperarEstadosDeCuenta(CodigoDeEmpresa);
             gvListaEstadosDeCuentas.DataSource = datos;
             gvListaEstadosDeCuentas.DataBind();
         }
 
         protected void lnkVolver_Click(object sender, EventArgs e)
-        {
-            // Volver a la página principal
-
+        { 
             Response.Redirect("PatallaPrincipal.aspx");
         }
 
         protected void lnkDetalles_Click(object sender, EventArgs e)
         {
-            // Ir a los detalles del estado de cuenta
+            Response.Redirect("DetallesEstadoDeCuentaEmpresa.aspx");
+        }
+
+        protected void gvListaEstadosDeCuentas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Obtener la fila seleccionada
+            GridViewRow selectedRow = gvListaEstadosDeCuentas.SelectedRow;
+
+            // Suponiendo que la columna Fecha está en el índice 2
+            int fechaColumnIndex = 2; 
+
+            // Extraer el valor de la columna Fecha
+            string fechaString = selectedRow.Cells[fechaColumnIndex].Text;
+
+            // Enviar parámetros
+            Session["fechaDeEstadoDeCuenta"] = fechaString;
+            
+        }
+
+        protected void gvListaEstadosDeCuentas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                LinkButton selectButton = e.Row.Cells[0].Controls[0] as LinkButton;
+                if (selectButton != null)
+                {
+                    selectButton.CssClass = "select-button";
+                }
+            }
         }
     }
 }
